@@ -74,17 +74,13 @@ RegisterNetEvent("mt-stealcopper:client:steal", function(entity)
             RemoveBoxFromScene(entity)
 			QBCore.Functions.Notify(Lang:t("stealboxes.already_stolen_error"), 'error')
 		else
-            local success = exports['qb-lock']:StartLockPickCircle(2,30)
-            if success then
-                success = exports['qb-lock']:StartLockPickCircle(4,10)
+            exports['ps-ui']:Circle(function(success)
                 if success then
                     startStealingBox(entity)
                 else
                     QBCore.Functions.Notify(Lang:t("stealboxes.messed_up_error"), 'error')
                 end
-            else
-                QBCore.Functions.Notify(Lang:t("stealboxes.messed_up_error"), 'error')
-            end
+            end, math.random(3, 6), math.random(10, 15))
 		end
 	end, objectCoords)
 end)
