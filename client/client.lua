@@ -1,4 +1,10 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local CurrentCops = 0
+
+RegisterNetEvent('police:SetCopCount')
+AddEventHandler('police:SetCopCount', function(amount)
+    CurrentCops = amount
+end)
 
 local function PoliceCall()
     local chance = 75
@@ -73,6 +79,8 @@ RegisterNetEvent("mt-stealcopper:client:steal", function(entity)
 		if occupied then
             RemoveBoxFromScene(entity)
 			QBCore.Functions.Notify(Lang:t("stealboxes.already_stolen_error"), 'error')
+        elseif CurrentCops < Config.requiredCopsCount then
+            QBCore.Functions.Notify(Lang:t("stealboxes.not_enough_cops"), 'error')
 		else
             exports['ps-ui']:Circle(function(success)
                 if success then

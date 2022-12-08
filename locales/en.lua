@@ -3,6 +3,7 @@ local Translations = {
     ["target_label"] = "Steal Box",
     ["stealing_animation_label"] = "STEALING BOX...",
     ["stealing_animation_canceled"] = "You canceled the stealing",
+    ["not_enough_cops"] = "You can't, Not enough police in town",
     ["already_stolen_error"] = "Someone already steal here",
     ["messed_up_error"] = "YOU MESSED UP!!!",
     ["box_removed"] = "You stole the box",
